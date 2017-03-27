@@ -1,0 +1,24 @@
+{
+  "name": "webfront",
+  "version": "0.0.1",
+  "description": "Front for MRP",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "mrp"
+  ],
+  "author": "jay",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "angular": "^1.6.3",
+    "bootstrap": "^3.3.7",
+    "c3-angular": "^1.3.1",
+    "express": "^4.15.2",
+    "jquery": "^3.2.1"
+  }
+}
