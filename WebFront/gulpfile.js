@@ -77,36 +77,6 @@ gulp.task('browser-sync', function() {
     });
 });
 
-/*
-
- gulp.task('browser-sync', ['nodemon'], function() {
- browserSync.init(null, {
- proxy: "http://localhost:5000",
- files: ["app/build/*.*"],
- browser: "google chrome",
- port: 7000,
- });
- });
-
-gulp.task('nodemon', function (cb) {
-
-    var started = false;
-
-    return nodemon({
-        script: 'index.js'
-    }).on('start', function () {
-        // to avoid nodemon being started multiple times
-        // thanks @matthisk
-        if (!started) {
-            cb();
-            started = true;
-        }
-    });
-});
-*/
-
-
-
 gulp.task('build', gulpSync.sync(['clean-build','copy-vendor','copy-searchApp','copy-html']));
 
 
