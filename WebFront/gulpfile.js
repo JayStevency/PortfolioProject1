@@ -8,7 +8,11 @@ var pkg = require('./package.json');
 var header = require('gulp-header');
 var gulpSync = require('gulp-sync')(gulp);
 var browserSync = require('browser-sync');
-var nodemon = require('gulp-nodemon');
+
+var minify_html = require('gulp-minify-html');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+var cleanCss = require('gulp-clean-css');
 
 
 var banner = ['/*!\n',
@@ -24,14 +28,14 @@ gulp.task('clean-build', function () {
         .pipe(clean());
 });
 
+gulp.task('clean-dist', function(){
+   return gulp.src('./app/dist/*')
+       .pipe(clean());
+});
+
 gulp.task('copy-vendor',function () {
 
-    /*
-    gulp.src('./node_modules/angular/angular.min.js')
-        .pipe(gulp.dest('./app/build/vendor/angular/'));
-        */
-
-    gulp.src(['./node_modules/angular/angular.js','./node_modules/angular-route/angular-route.js'])
+    gulp.src(['./node_modules/angular/angular.min.js','./node_modules/angular-route/angular-route.min.js'])
         .pipe(gulp.dest('./app/build/vendor/angular/'));
 
     gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.min.css','./node_modules/bootstrap/dist/js/bootstrap.min.js'])
@@ -67,7 +71,7 @@ gulp.task('copy-html',function () {
 gulp.task('browser-sync', function() {
     browserSync.init(null, {
         server : {
-            baseDir: './app/build/'
+            baseDir: './app/dist/'
         },
         port: 7000
     });
@@ -100,15 +104,33 @@ gulp.task('nodemon', function (cb) {
     });
 });
 */
-gulp.task('realise', function () {
-    gulp.src('app/build/js/*')
-       .pipe(gulp.dest('app/dist/js/'));
 
-    gulp.src('app/build/vendor/angular/angular.js')
-        .pipe(gulp.dest('app/dist/angular/'));
 
-    //gulp.src(['app/build/bootstrap/dist/bootstrap.min.css','app/build/bootstrap/dist/bootstrap.'])
+
+gulp.task('build', gulpSync.sync(['clean-build','copy-vendor','copy-searchApp','copy-html']));
+
+
+gulp.task('realise', gulpSync.sync(['clean-dist','build']),function () {
+    gulp.src('app/build/vendor/**/**/*')
+        .pipe(gulp.dest('app/dist/vendor/'));
+
+    gulp.src('app/build/repolist/*.html')
+        .pipe(minify_html())
+        .pipe(gulp.dest('app/dist/repolist/'));
+
+    gulp.src('app/build/*.js')
+        .pipe(header(banner, { pkg: pkg }))
+        .pipe(gulp.dest('app/dist/'));
+
+    gulp.src('app/build/*.css')
+        .pipe(cleanCss())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('app/dist/'));
+
+    gulp.src('app/build/index.html')
+        .pipe(minify_html())
+        .pipe(gulp.dest('app/dist/'));
+
 });
 
-
-gulp.task('dev', gulpSync.sync(['clean-build','copy-vendor','copy-searchApp','copy-html','browser-sync']));
+gulp.task('run', gulpSync.sync(['realise','browser-sync']));

@@ -30,6 +30,7 @@ public class GithubService {
         this.objects = objects;
     }
 
+
     public Object[] getRepoListData(){
 
          /*
@@ -44,8 +45,6 @@ public class GithubService {
 
         return DataRender.getRepoList(objects);
     }
-
-
 
     public Object[] getPieChartData(){
         Object[] result = DataRender.getPieChart(objects);
@@ -76,6 +75,11 @@ public class GithubService {
             ret[i++] = (Object) pieVO;
         }
         return ret;
+    }
+
+
+    public Object getUserData(){
+        return DataRender.getUserData(objects);
     }
 
 }

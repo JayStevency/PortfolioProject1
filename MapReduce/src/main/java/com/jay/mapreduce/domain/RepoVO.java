@@ -6,10 +6,14 @@ package com.jay.mapreduce.domain;
 public class RepoVO {
     private String name;
     private int stars;
+    private int fork;
+    private int watches;
 
-    public RepoVO(String name, int stars) {
+    public RepoVO(String name, int stars, int fork, int watches) {
         this.name = name;
         this.stars = stars;
+        this.fork = fork;
+        this.watches = watches;
     }
 
     @Override
@@ -17,7 +21,25 @@ public class RepoVO {
         return "RepoVO{" +
                 "name='" + name + '\'' +
                 ", stars=" + stars +
+                ", fork=" + fork +
+                ", watches=" + watches +
                 '}';
+    }
+
+    public int getFork() {
+        return fork;
+    }
+
+    public void setFork(int fork) {
+        this.fork = fork;
+    }
+
+    public int getWatches() {
+        return watches;
+    }
+
+    public void setWatches(int watches) {
+        this.watches = watches;
     }
 
     public String getName() {
