@@ -6,13 +6,19 @@
 
 - 전체 시스템 구성도
 
-![Server-Architecture](https://github.com/JayStevency/JayStevency/blob/master/PortfolioProject1/Server-Architecture.png)
+![System-Architecture](https://github.com/JayStevency/JayStevency/blob/master/PortfolioProject1/Server-Architecture.png)
 
 - Front-End Detail
 
+![Front](https://github.com/JayStevency/JayStevency/blob/master/PortfolioProject1/Front.png)
+
 - Server1 Detail
+
+![Server1](https://github.com/JayStevency/JayStevency/blob/master/PortfolioProject1/Server1.png)
 
 - Server2 Detail
 
-## How to build project?
+![Server2](https://github.com/JayStevency/JayStevency/blob/master/PortfolioProject1/Server2.png)
+
+## How to run project?
 
