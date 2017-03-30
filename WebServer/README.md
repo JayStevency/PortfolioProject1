@@ -1,1 +1,29 @@
 # WebServer
+
+클라이언트 요청 및 응답을 처리하는 API 서버
+
+## Server Architecture
+
+![Server1](https://github.com/JayStevency/JayStevency/blob/master/PortfolioProject1/Server1.png)
+
+
+### 서버 주요 기능 :
+- Spring-boot
+- Restful
+- MongoDB
+- Cache-Module
+
+## How to run Server?
+
+### 개발 환경 :
+
+- JAVA : 1.8
+- Maven : 3.3.9
+- Mongo : 3.2.7
+- Spring-boot : 1.5.2
+
+### 실행 방법
+
+```
+mvn spring-boot:run
+```
