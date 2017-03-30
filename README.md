@@ -6,7 +6,7 @@
 
 - 전체 시스템 구성도
 
-![Server-Architecture](https://github.com/JayStevency/JayStevency/blob/master/PortfolioProject1/Server-Architecture.png)
+![Server-Architecture](https://github.com/JayStevency/JayStevency/raw/master/path/to/PortfolioProject1/Server-Architecture.png)
 
 - Front-End Detail
 
