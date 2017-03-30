@@ -32,15 +32,18 @@ public class GithubController {
         RestTemplate restTemplate = new RestTemplate();
         logger.info("URI : {}", uri+data+"/repos");
         ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(uri+data+"/repos", Object[].class);
-        //Object[] ret = githubService.getMapReduce(responseEntity.getBody());
+
         if(githubService == null)
             githubService = new GithubService(responseEntity.getBody());
-        else
+        else{
             githubService.setObjects(responseEntity.getBody());
-        Object[] ret = new Object[2];
-        ret[0] = githubService.getRepoListData();
-        ret[1] = githubService.getPieChartData();
-        //ret[2] = githubService.getPieChartData();
+        }
+
+        Object[] ret = new Object[3];
+
+        ret[0] = githubService.getUserData();
+        ret[1] = githubService.getRepoListData();
+        ret[2] = githubService.getPieChartData();
         logger.info("Search Result : {}", ret.toString());
         return ret;
     }

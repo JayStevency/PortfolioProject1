@@ -6,6 +6,7 @@ import com.jay.mapreduce.domain.RepoVO;
 import com.jay.mapreduce.domain.LangVO;
 
 
+import com.jay.mapreduce.domain.UserVO;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,10 @@ public class DataRender {
 
         for(Object obj : input){
             JSONObject jsonObject = new JSONObject(gson.toJson(obj));
-            ret[i++] = (Object) new RepoVO(jsonObject.getString("name"),jsonObject.getInt("stargazers_count"));
+            ret[i++] = (Object) new RepoVO(jsonObject.getString("name"),
+                    jsonObject.getInt("stargazers_count"),
+                    jsonObject.getInt("forks_count"),
+                    jsonObject.getInt("watchers_count"));
         }
         return ret;
 
@@ -43,6 +47,17 @@ public class DataRender {
         }
 
         return ret;
+    }
+
+    public static Object getUserData(Object[] input){
+
+
+        JSONObject jsonObject = new JSONObject(gson.toJson(input[0]));
+        JSONObject user = jsonObject.getJSONObject("owner");
+
+        String name = user.getString("login");
+        String avatar = user.getString("avatar_url");
+        return (Object) new UserVO(avatar,name);
     }
 
 }
