@@ -37,13 +37,19 @@ public class DataRender {
 
     public static Object[] getPieChart(Object[] input){
         int i = 0 ;
-        Object[] ret = new Object[input.length];
+        Object[] ret = new Object[(input.length % 5 == 0? input.length : 5 * (input.length/5 + 1))];
 
         for(Object obj : input){
             JSONObject jsonObject = new JSONObject(gson.toJson(obj));
             String name = jsonObject.getString("name");
             String language = (jsonObject.has("language") ? jsonObject.getString("language") : "empty");
             ret[i++] = (Object) new LangVO(name, language);
+        }
+
+        /** Padding 부분
+         */
+        for(; i < ret.length; i++){
+            ret[i] = (Object) new LangVO("empty","empty");
         }
 
         return ret;

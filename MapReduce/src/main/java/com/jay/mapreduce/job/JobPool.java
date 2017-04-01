@@ -7,10 +7,11 @@ import java.util.concurrent.Executors;
  * Created by jay on 2017. 3. 29..
  */
 public class JobPool {
+    public ExecutorService mapExcutorService;
+    public ExecutorService reduceExcutorService;
 
-    public static ExecutorService executorService = Executors.newFixedThreadPool(5);
-
-
-
-
+    public JobPool() {
+        mapExcutorService = Executors.newFixedThreadPool(5);
+        reduceExcutorService = Executors.newSingleThreadExecutor();
+    }
 }
