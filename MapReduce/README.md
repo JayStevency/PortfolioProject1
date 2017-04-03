@@ -8,9 +8,13 @@ GitHub 데이터를 렌더링 하는 API 서버
 
 
 ### 서버 주요 기능 :
-- Spring-boot
-- Restful
-- MapReduce
+
+#### Spring-boot
+ > GitHub 데이터 조회 
+ 
+#### MapReduce
+ 
+ > GitHub Repository Language 데이터 빈도 수 계산
 
 ## How to run Server?
 
@@ -35,3 +39,26 @@ GitHub 데이터를 렌더링 하는 API 서버
  >  혹은
  >
  >```mvn spring-boot:run```
+ 
+## MapReduce 구현
+ 
+  ###JobTracker 
+  
+    > Map task 와 Reduce task에 데이터 할당
+      
+  ###JobPool
+    
+    > ```ExecutorService``` 로 스레드 관리
+    
+    > **Map task** -> FixedThreadPool
+    
+    > **Reduce task** -> SingleThreadPool
+    
+  ###JobMap
+  
+    > GitHub Language 데이터 빈도수 계산
+
+  ###JobReduce
+  
+    > Map 결과를 합치는 작업
+  

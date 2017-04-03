@@ -8,10 +8,18 @@
 
 
 ### 서버 주요 기능 :
-- Spring-boot
-- Restful
-- MongoDB
-- Cache-Module
+#### Spring-boot
+
+> 데이터 전달 및 데이터 저장
+
+#### MongoDB
+
+> 검색 데이터 결과 저장
+
+
+#### Cache-Module
+
+> 검색 데이터 캐싱 모듈
 
 ## How to run Server?
 
@@ -37,3 +45,11 @@
   >  혹은
   >
   >```mvn spring-boot:run```
+
+#### Cache-Managing
+
+ ###LRU
+    
+     > Request Queue(size : 10)에 search data 관리 
+     > Cache가 가득 차면 Request Queue에 가장 오래 전에 등장한 Search data 반환
+     > NoSql에 캐시에 삭제 된 데이터 저장
