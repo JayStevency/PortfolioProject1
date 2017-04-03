@@ -48,7 +48,7 @@
 
 #### Cache-Managing
 
- ###LRU
+ **LRU**
     
      > Request Queue(size : 10)에 search data 관리 
      > Cache가 가득 차면 Request Queue에 가장 오래 전에 등장한 Search data 반환

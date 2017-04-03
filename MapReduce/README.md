@@ -42,23 +42,21 @@ GitHub 데이터를 렌더링 하는 API 서버
  
 ## MapReduce 구현
  
-  ###JobTracker 
+  **JobTracker** 
   
     > Map task 와 Reduce task에 데이터 할당
       
-  ###JobPool
+  **JobPool**
     
-    > ```ExecutorService``` 로 스레드 관리
+    > ExecutorService 로 스레드 관리
+    > Map task -> FixedThreadPool
+    > Reduce task -> SingleThreadPool
     
-    > **Map task** -> FixedThreadPool
-    
-    > **Reduce task** -> SingleThreadPool
-    
-  ###JobMap
+  **JobMap**
   
     > GitHub Language 데이터 빈도수 계산
 
-  ###JobReduce
+  **JobReduce**
   
     > Map 결과를 합치는 작업
   
