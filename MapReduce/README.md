@@ -26,19 +26,13 @@ GitHub 데이터를 렌더링 하는 API 서버
 
 ### 실행 방법
 
-1. 빌드 방법
+1. Run
     
- > **pom.xml** 파일이 있는 경로에서 ```mvn clean package```
-
- 
-2. 빌드 후 run
-
-
- >```java -jar target/mapreduce-0.0.1-SNAPSHOT.jar``` 
- >
- >  혹은
- >
- >```mvn spring-boot:run```
+>**pom.xml** 파일이 있는 경로에서 ```mvn clean package``` 후 ```java -jar target/webserver-0.0.1-SNAPSHOT.jar``` 
+>
+> 혹은
+>
+> ```mvn spring-boot:run```
  
 ## MapReduce 구현
  
