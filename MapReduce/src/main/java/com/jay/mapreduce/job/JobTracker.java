@@ -37,8 +37,8 @@ public class JobTracker {
         //쓰레드 풀로 스레드 관리
         JobPool jobPool = new JobPool();
         List<Map<String, Integer>> mapResult = Collections.synchronizedList(new ArrayList<>());
-        int task_length = works.length/5;
-        for(int i = 0; i < 5; i++){
+        int task_length = works.length/JobPool.JOB_MAX;
+        for(int i = 0; i < JobPool.JOB_MAX; i++){
             Object[] task = new Object[task_length];
             ArrayCopy(works,i * task_length, task);
             Future<Map<String, Integer>> future = jobPool.mapExcutorService.submit(new JobMap(task));

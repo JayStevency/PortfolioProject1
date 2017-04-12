@@ -7,6 +7,7 @@ import com.jay.mapreduce.domain.LangVO;
 
 
 import com.jay.mapreduce.domain.UserVO;
+import com.jay.mapreduce.job.JobPool;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,7 @@ public class DataRender {
 
     public static Object[] getPieChart(Object[] input){
         int i = 0 ;
-        Object[] ret = new Object[(input.length % 5 == 0? input.length : 5 * (input.length/5 + 1))];
+        Object[] ret = new Object[(input.length % JobPool.JOB_MAX == 0? input.length : JobPool.JOB_MAX * (input.length/JobPool.JOB_MAX + 1))];
 
         for(Object obj : input){
             JSONObject jsonObject = new JSONObject(gson.toJson(obj));
